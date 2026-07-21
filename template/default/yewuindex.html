@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<title>{pboot:if('{sort:title}'=='')}{pboot:pagetitle}{else}{sort:title}{/pboot:if}</title>
+<meta name="keywords" content="{pboot:if('{sort:keywords}'=='')}{pboot:pagekeywords}{else}{sort:keywords}{/pboot:if}">
+<meta name="description" content="{pboot:if('{sort:description}'=='')}{pboot:pagedescription}{else}{sort:description}{/pboot:if}">
+<link rel="stylesheet" id="pageloader-css" href="{pboot:sitedomain}/skin/css/pageloader.css" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitedomain}/skin/css/public.css" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitedomain}/skin/css/iconfont.css" />
+</head>
+<body>
+<div class="wrap isload">
+  {include file=head.html}
+  <!--end--> 
+  <!--end-->
+  <div class="pic_bn"> {pboot:sort scode={sort:tcode}}<img class="pic_bn_img" src="[sort:pic]" />{/pboot:sort}
+    <div class="pic_text"> <img src="{pboot:sitedomain}/skin/images/inbt_7.png" /> </div>
+  </div>
+  <div class="m_pic_bn"> {pboot:sort scode={sort:tcode}}<img src="[sort:ico]" />{/pboot:sort} </div>
+  <div class="html_cont work_top">
+    <div class="join_us_title">{sort:name}</div>
+    <div class="join_us_title1"> {sort:def1} </div>
+    <!--项目投资-->
+    
+    {pboot:nav num=40 parent={sort:tcode}}
+    <div class="work_left"> <a href="[nav:link]">
+      <div class="work_t"> <img src="[nav:ico]"/> </div>
+      <div class="work_b work_b2">
+        <h2>[nav:name]</h2>
+        <p>[nav:description lencn=18]</p>
+      </div>
+      </a> </div>
+    {/pboot:nav}
+    
+    <!--end--> 
+  </div>
+  <div class="invest_bottom work_bottom">
+    <div class="join_us_title"> 项目分布图 </div>
+    <div class="join_us_title1"> 浙江昕昕新能源坚持“以总部为管理与服务平台，以区域公司（分公司）为业务支撑，以项目公司（光伏电站）为运营单元”的三级组织架构，积极拓展光伏电站业务。自成立至今，已在全国多个省市筛选储备光伏项目近70MW，其中已并网容量近40MW。同时，分布式光伏、储能、风电业务不断拓展，多能互补、配电网、微电网、售电等业务稳步推进，公司业务呈现出“光电领跑，多元协调”的态势。 </div>
+    <div class="work_map index_move_load"> <img src="{pboot:sitedomain}/skin/images/index_map.png"/> </div>
+  </div>
+  <!--公共脚部-->
+  {include file=foot.html}
+</div>
+{include file=foot2.html}
+<!--end--> 
+<script type="text/javascript">
+	if($(window).width()>750){
+		//地图js
+		//吉林、辽宁、山西、河南，山东有数据
+//				以下为模拟方法,应通过获取id,ajax返回此id数据
+		$(".index_sub").hover(function() {
+			var map_id = $(this).data("id");
+			if(map_id != undefined && $("#businessjs_"+map_id).length ==1) {
+				$(".index_map_text h2").html($("#businessjs_"+map_id).find("h3").html());
+				$(".index_map_text .map_cont").html($("#businessjs_"+map_id).find(".map_cont").html());
+				var map_class=$(this).attr("class");
+				if(map_class.indexOf("icon_color1") > 0 ){
+					$(".index_map_text").removeClass("index_map_text2").addClass("index_map_text1 index_map_text_cut");
+				}else{
+					$(".index_map_text").removeClass("index_map_text1").addClass("index_map_text2 index_map_text_cut");
+				}
+			}
+		}, function() {
+			$(".index_map_text").removeClass("index_map_text_cut");
+		});
+		$(".index_map").hover(function(){},function() {
+			$(".index_map_text").removeClass("index_map_text_cut");
+		})
+		}else{
+			$(".work_map").html('<img src="{pboot:sitedomain}/skin/images/index_map.png"/>');
+		}
+		//end
+</script>
+</body>
+</html>

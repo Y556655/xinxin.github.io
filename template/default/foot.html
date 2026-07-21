@@ -1,0 +1,30 @@
+<div class="footer">
+    <div class="link">
+      <div class="link_content"> 友情链接：
+        <select class="friendlink_select">
+          <option value="">相关链接</option>
+          {pboot:link  gid=1 num=50}
+          <option value="[link:link]" target="_blank">[link:name]</option>
+          {/pboot:link}
+        </select>
+      </div>
+    </div>
+    <div class="foot">
+      <ul>
+        {pboot:nav num=5}
+        <li> 
+        <a href="[nav:link]" class="foot_h2">[nav:name]</a> 
+        {pboot:2nav parent=[nav:scode]}
+        <a href="[2nav:link]">[2nav:name]</a>
+        {/pboot:2nav}
+        </li>
+        {/pboot:nav}
+      </ul>
+      <div class="foot_a">
+        <img src="{pboot:companyweixin}"/>
+      </div>
+      <div class="clear"></div>
+      <div class="foot_bottom"> 网站备案号:<a href="https://beian.miit.gov.cn/" target="_blank" style="color:#fff;" rel="nofollow">{pboot:siteicp}</a>&nbsp;{pboot:sitecopyright}&nbsp;&nbsp;&nbsp;地址：{pboot:companyaddress}<br/>
+        电话/Tel：{pboot:companyphone}   联系人：{pboot:companycontact}  邮箱/Mail：{pboot:companyemail}</div>
+    </div>
+  </div>

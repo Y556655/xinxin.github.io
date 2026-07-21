@@ -1,0 +1,55 @@
+<div class="header"> <a href="{pboot:sitedomain}/" class="logo"><img src="{pboot:sitelogo}"/></a>
+    <div class="nav">
+      <div class="nav_language"> <a  id="StranLink" href="javascript:;">繁</a></div>
+      <ul  class="q_nav">
+        <li class="q_nav_sy"> <a href="{pboot:sitedomain}/" class="nav_click" id="qh_1" >首页</a> </li>
+        {pboot:nav}
+        <li class="nav_li_click " id="qh_1"> <a href="[nav:link]" class="nav_click">[nav:name]</a>
+          <div class="nav_sub"> <img src="[nav:ico]"/>
+            <div class="nav_sub_div">
+              <h3>[nav:subname]</h3>
+              <p> 
+              {pboot:2nav parent=[nav:scode]}
+              <a href="[2nav:link]"><i class="iconfont">&#xe64c;</i>[2nav:name]</a> 
+              {/pboot:2nav}
+              </p>
+            </div>
+          </div>
+        </li>
+        {/pboot:nav}
+      </ul>
+    </div>
+    <div class="head_sreach">
+      <div class="sreach"> <i class="iconfont">&#xe613;</i> </div>
+      <div class="site_map"> <i class="iconfont">&#xe65c;</i> </div>
+      <a href="javascript:;" class="cut_en" id="gb2big5" style="font-size:18px; color: #ea1024; line-height: 19px;"> 繁 </a> </div>
+    <!--搜索-->
+    <div class="index_sreach">
+    <form action="{pboot:scaction}"  method="get">
+      <input type="text" name="keyword" id="search" placeholder="请输入搜索关键字"/>
+     <input type="submit" id="search_a" value="搜索">
+      </form>
+      </div>
+    <!--end--> 
+    <!--网站地图-->
+    <div class="index_site_map">
+      <ul>
+        <li>
+          <h2><i class="iconfont"></i><a href="{pboot:sitedomain}/">首页</a></h2>
+        </li>
+        {pboot:nav}
+        <li>
+          <h2><i class="iconfont">&#xe6c2;</i><a href="[nav:link]">[nav:name]</a></h2>
+          <div class="site_nav"> 
+          {pboot:2nav parent=[nav:scode]}
+          <a href="[2nav:link]">[2nav:name]</a>
+          {/pboot:2nav}
+          </div>
+        </li>
+        {/pboot:nav}
+      </ul>
+    </div>
+    <!--end--> 
+    
+  </div>
+  <div class="head_bg"></div>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<title>{pboot:if('{sort:title}'=='')}{pboot:pagetitle}{else}{sort:title}{/pboot:if}</title>
+<meta name="keywords" content="{pboot:if('{sort:keywords}'=='')}{pboot:pagekeywords}{else}{sort:keywords}{/pboot:if}">
+<meta name="description" content="{pboot:if('{sort:description}'=='')}{pboot:pagedescription}{else}{sort:description}{/pboot:if}">
+<link rel="stylesheet" id="pageloader-css" href="{pboot:sitedomain}/skin/css/pageloader.css" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitedomain}/skin/css/public.css" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitedomain}/skin/css/iconfont.css" />
+</head>
+<body>
+<div class="wrap isload">
+  {include file=head.html}
+  <!--end--> 
+  <!--end-->
+  
+  <div class="pic_bn">{pboot:sort scode={sort:tcode}}<img class="pic_bn_img" src="[sort:pic]" />{/pboot:sort}
+    {pboot:sort scode=2}
+    <div class="pic_text1">
+      <h2>[sort:name]</h2>
+      <p> {pboot:content id=19}[content:content drophtml=1 dropblank=1 len=200 more='...']{/pboot:content}</p>
+      <a href="[sort:link]">查看更多</a> </div>
+      {/pboot:sort}
+  </div>
+  <div class="m_pic_bn"> {pboot:sort scode={sort:tcode}}<img src="[sort:ico]" />{/pboot:sort}
+    <div class="pic_text1">
+      {pboot:sort scode=2}
+      <h2>[sort:name]</h2>
+      <p> {pboot:content id=19}[content:content drophtml=1 dropblank=1 len=200 more='...']{/pboot:content}</p>
+      <a href="[sort:link]">查看更多</a> 
+      {/pboot:sort}
+      </div>
+  </div>
+  <div class="html_cont"> 
+    <!--董事长致辞-->
+    {pboot:sort scode=3}
+    <div class="about_us_img"> <img src="[sort:ico]" /> </div>
+    
+    <div class="about_us_cont">
+      <h2>[sort:name]</h2>
+      <p> {pboot:content id=20}[content:content drophtml=1 dropblank=1 len=200 more='...']{/pboot:content}</p>
+      <a href="[sort:link]" class="text_a"><span>了解更多</span><i class="iconfont">&#xe735;</i></a>
+      </div>
+    {/pboot:sort}
+    <!--end-->
+    <div class="about_us_a"> 
+    {pboot:sort scode=5}<a href="[sort:link]"><img src="{pboot:sitedomain}/skin/images/ab_qybj.jpg"/></a> {/pboot:sort}
+    {pboot:sort scode=4}<a href="[sort:link]"><img src="{pboot:sitedomain}/skin/images/ab_fzzl.jpg"/></a> {/pboot:sort}
+    </div>
+  </div>
+  <!--发展战略-->
+  {pboot:sort scode=4}
+  <div class="about1 about_move">
+    <div class="about_title"> [sort:name] <span></span> </div>
+    <div class="about1_left"> </div>
+    <div class="about1_right"><img src="{pboot:sitedomain}/skin/images/m_img2.jpg" />
+      <div class="about1_m">
+        <p> {pboot:content id=21}[content:content drophtml=1 dropblank=1 len=200 more='...']{/pboot:content}<br/>
+        </p>
+      </div>
+    </div>
+    <div class="about_bg">
+      <p> {pboot:content id=21}[content:content drophtml=1 dropblank=1 len=200 more='...']{/pboot:content}<br/>
+      </p>
+    </div>
+  </div>
+  {/pboot:sort}
+  <!--end-->
+  <div class="about2 about_move">
+    <h2>独特优势</h2>
+    <p></p>
+    <div class="about2_d">
+      <div class="about2_sub1">
+        <h3>品牌优势</h3>
+        <p>借助昕昕能源强大的品牌效应，拥有较为广泛的政府资源及较高的行业认同。</p>
+      </div>
+      <div class="about2_sub3">
+        <h3>资金优势</h3>
+        <p>具备雄厚的资金实力、多样化的融资渠道及有竞争力的资金成本。</p>
+      </div>
+      <div class="about2_sub2">
+        <h3>资源优势</h3>
+        <p>依托各股东庞大的企业客户群体，潜在项目资源丰富。</p>
+      </div>
+      <div class="about2_sub4">
+        <h3>风控优势</h3>
+        <p>秉承金融投资机构的全面风险控制和投资评价体系，融合光伏行业专业技术和效益分析能力，建立起高效严密的光伏项目投资评价体系。</p>
+      </div>
+    </div>
+  </div>
+  <div class="about3 about_move">
+    <h2>企业宣传片</h2>
+    <p></p>
+    <div class="about3_video">
+      <div id="a1"></div>
+      <input type="text" value="{label:video}" class="video_value hidden">
+      <input type="text" value="{pboot:sitedomain}/skin/images/video.jpg" class="video_img hidden">
+    </div>
+  </div>
+  <!--公共脚部-->
+  {include file=foot.html}
+</div>
+{include file=foot2.html}
+<!--end--> 
+<script type="text/javascript">
+	var offset_top, scroll_top, offset_top;
+		win_height = $(window).height();
+		function scroll_js() {
+			var scroll_top = $(window).scrollTop();
+			$(".about_move").each(function() {
+				offset_top = $(this).offset().top;
+				if(win_height + scroll_top > offset_top + 200) {
+					$(this).addClass("move_load");
+				}
+			});
+		};
+		scroll_js();
+		$(window).scroll(function() {
+			scroll_js();
+		});
+</script> 
+<script type="text/javascript" src="{pboot:sitedomain}/skin/js/ckplayer.js" charset="utf-8"></script> 
+<script type="text/javascript">
+	$("#qh_2").addClass("nav_cut");
+	var video = $(".video_value").val();
+	var _img = $(".video_img").val();
+	var flashvars = {
+		f: video,
+		c: 0,
+		p:2,
+		i:_img
+	};
+	var params = {bgcolor: '#333333', allowFullScreen: true, allowScriptAccess: 'always', wmode: 'transparent'};
+	var video = [video + '->video/mp4', video + '->video/ogg'];
+	var support = ['all'];
+	if ($(window).width()<750){
+		CKobject.embed('{pboot:sitedomain}/skin/ckplayer/ckplayer.swf', 'a1', 'ckplayer_a1', '100%', '300', false, flashvars, video, params,support);
+	}else{
+		CKobject.embed('{pboot:sitedomain}/skin/ckplayer/ckplayer.swf', 'a1', 'ckplayer_a1', '100%', '493', false, flashvars, video, params,support);
+	}
+</script>
+</body>
+</html>

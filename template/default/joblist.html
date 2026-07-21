@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<title>{pboot:if('{sort:title}'=='')}{pboot:pagetitle}{else}{sort:title}{/pboot:if}</title>
+<meta name="keywords" content="{pboot:if('{sort:keywords}'=='')}{pboot:pagekeywords}{else}{sort:keywords}{/pboot:if}">
+<meta name="description" content="{pboot:if('{sort:description}'=='')}{pboot:pagedescription}{else}{sort:description}{/pboot:if}">
+<link rel="stylesheet" id="pageloader-css" href="{pboot:sitedomain}/skin/css/pageloader.css" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitedomain}/skin/css/public.css" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitedomain}/skin/css/iconfont.css" />
+</head>
+<body>
+<div class="wrap isload">
+  {include file=head.html} 
+  <!--end-->
+  <div class="pic_bn"> {pboot:sort scode={sort:tcode}}<img class="pic_bn_img" src="[sort:pic]" />{/pboot:sort}
+    <div class="pic_text"> <img src="{pboot:sitedomain}/skin/images/inbt_20.png" /> </div>
+    <div class="pic_go_back">
+      <h2>{sort:topname}</h2>
+      <div class="go_back">
+        <ul>
+          {pboot:nav num=40 parent={sort:tcode}}
+          <li {pboot:if('[nav:scode]'=='{sort:scode}')}class="li_cut"{/pboot:if} ><a href="[nav:link]">[nav:name]</a></li>
+          {/pboot:nav}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="m_pic_bn"> {pboot:sort scode={sort:tcode}}<img src="[sort:ico]" />{/pboot:sort} </div>
+  <div class="html_cont">
+    <div class="cont_title">
+      <h2>{sort:name}</h2>
+      <div class="go_home"> <i class="iconfont">&#xe605;</i> 所在位置：{pboot:position}</div>
+      <div class="clear"></div>
+    </div>
+    <div class="html_left">
+      <div class="details_cont5">
+        <p><span style="font-size: 20px;">昕昕新能源诚挚欢迎您的加入!</span></p>
+        <p><span style="font-size: 20px;">招聘邮箱：{pboot:companyemail}</span></p>
+        <p><br/>
+        </p>
+        <dl class="details_dl">
+          {pboot:list num=8 order=sorting}
+          <dd>
+            <div class="dl_title">[list:title]<i class="iconfont">&#xe606;</i></div>
+            <div class="dl_open">
+              <p> 学历：[list:ext_xueli]</p>
+              <p> 专业要求：[list:content drophtml=1 dropblank=1 lencn=150]</p>
+              <a href="mailto:{pboot:companyemail}" class="open_btn">申请该职位</a> </div>
+          </dd>
+          {/pboot:list}
+        </dl>
+      </div>
+    </div>
+    <!--右侧-->
+    {include file=right.html}
+  </div>
+  <div class="login_bj"> <a class="close_creatVideo" href="javascript:;" style="width: 26px; height: 26px; background:url('{pboot:sitedomain}/skin/images/video_close_bbtn.png') no-repeat; position: absolute; right: 10px; top: 10px;"></a> </div>
+  <div id="video" >
+    <div id="a1"></div>
+  </div>
+  <!--公共脚部-->
+  {include file=foot.html}
+</div>
+{include file=foot2.html}
+<!--end--> 
+<script type="text/javascript" src="{pboot:sitedomain}/skin/js/ckplayer.js" charset="utf-8"></script> 
+<script type="text/javascript">
+	$(".text_pr a").click(function () {
+	   $(".login_bj").show();
+		var video = $(this).attr("data-value");
+		var _img = $(".video_img").val();
+		CKobject._K_('video').style.display = 'block';
+		var flashvars = {
+			f: video,
+			c: 0,
+			p:2,
+			i:_img
+		};
+		var params = {bgcolor: '#fff', allowFullScreen: true, allowScriptAccess: 'always', wmode: 'transparent'};
+		var video = [video + '->video/mp4', video + '->video/ogg'];
+		var support = ['all'];
+		CKobject.embed('{pboot:sitedomain}/skin/ckplayer/ckplayer.swf', 'a1', 'ckplayer_a1', '1000', '500', false, flashvars, video, params,support);
+	});
+	$(".login_bj").click(function () {
+			$(".login_bj").hide();
+			CKobject._K_('video').style.display = 'none';
+			if(CKobject._K_('a1').innerHTML!=''){
+		CKobject.getObjectById('ckplayer_a1').videoPlay();
+					CKobject._K_('a1').innerHTML = '';
+	}
+	})
+	$(".dl_title").click(function() {
+		if($(this).parent("dd").height() == 50) {
+			var this_dd = $(this).next().innerHeight() + 50;
+			$(this).parent("dd").height(this_dd);
+			$(this).find("i").html("&#xe607;");
+		} else {
+			$(this).parent("dd").height(50);
+			$(this).find("i").html("&#xe606;");
+		}
+	});
+	$(".details_dl dd").eq(0).find(".dl_title").click();
+</script>
+</body>
+</html>

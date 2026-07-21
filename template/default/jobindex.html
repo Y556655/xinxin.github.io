@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<title>{pboot:if('{sort:title}'=='')}{pboot:pagetitle}{else}{sort:title}{/pboot:if}</title>
+<meta name="keywords" content="{pboot:if('{sort:keywords}'=='')}{pboot:pagekeywords}{else}{sort:keywords}{/pboot:if}">
+<meta name="description" content="{pboot:if('{sort:description}'=='')}{pboot:pagedescription}{else}{sort:description}{/pboot:if}">
+<link rel="stylesheet" id="pageloader-css" href="{pboot:sitedomain}/skin/css/pageloader.css" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitedomain}/skin/css/public.css" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitedomain}/skin/css/iconfont.css" />
+</head>
+<body>
+<div class="wrap isload">
+  {include file=head.html}
+  <!--end--> 
+  <!--end-->
+  <div class="pic_bn">  {pboot:sort scode={sort:tcode}}<img class="pic_bn_img" src="[sort:pic]" />{/pboot:sort}
+    <div class="pic_text"> <img src="{pboot:sitedomain}/skin/images/inbt_20.png" /> </div>
+    <div class="pic_go_back">
+      <h2>{sort:topname}</h2>
+      <div class="go_back">
+        <ul>
+          {pboot:nav num=40 parent={sort:tcode}}
+          <li {pboot:if('[nav:scode]'=='{sort:scode}')}class="li_cut"{/pboot:if} ><a href="[nav:link]">[nav:name]</a></li>
+          {/pboot:nav}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="m_pic_bn"> {pboot:sort scode={sort:tcode}}<img src="[sort:ico]" />{/pboot:sort} </div>
+  <div class="html_cont">
+    <div class="join_us_title">展卓越才华 铸成功之路</div>
+    <div class="join_us_title1">
+      <p> <span style="font-size:14px;">昕昕新能源诚挚邀请有相关经验的社会人士、高校优秀应届毕业生了解我们，加入我们！</span></p>
+    </div>
+    <!--人才理念-->
+    
+    <div class="join_us_t_left w543">
+      <div class="join_img"> <img src="{pboot:sitedomain}/skin/images/job.jpg"/> </div>
+    </div>
+    
+    <!--end--> 
+    <!--校园招聘-->
+    {pboot:sort scode=21}
+    <div class="join_us_t_left join_r_text"> <a href="[sort:link]">
+      <div class="join_img"> <img src="[sort:ico]"/> </div>
+      <div class="join_right">
+        <h2>[sort:name]</h2>
+        <p>[sort:def1]</p>
+        <b><i class="iconfont">&#xe687;</i></b>
+        <div class="join_ap join_ap1"><i class="iconfont">&#xe604;</i></div>
+      </div>
+      </a> </div>
+    {/pboot:sort}
+    <!--end--> 
+    <!--简历投递-->
+    <div class="join_us_t_bottom"> <a href="mailto:{pboot:companyemail}">简历投递</a>
+      <p>To Apply, Join Us</p>
+      <p class="font15"><i class="iconfont">&#xe624;</i>地址：{pboot:companyaddress}</p>
+    </div>
+    <!--end--> 
+    <!--社会招聘-->
+    {pboot:sort scode=20}
+    <div class="join_us_t_right"> <a href="[sort:link]">
+      <div class="join_img1">
+        <h2>[sort:name]</h2>
+        <p>[sort:def1]</p>
+        <b><i class="iconfont">&#xe687;</i></b>
+        <div class="join_ap join_ap2"><i class="iconfont">&#xe6c2;</i></div>
+      </div>
+      <div class="join_img2"> <img src="[sort:ico]"/> </div>
+      </a> </div>
+    {/pboot:sort}
+    <!--end--> 
+  </div>
+  <!--公共脚部-->
+  {include file=foot.html}
+</div>
+{include file=foot2.html} 
+<!--end-->
+</body>
+</html>

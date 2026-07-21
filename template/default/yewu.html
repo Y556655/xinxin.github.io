@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0">
+<title>{pboot:if('{sort:title}'=='')}{pboot:pagetitle}{else}{sort:title}{/pboot:if}</title>
+<meta name="keywords" content="{pboot:if('{sort:keywords}'=='')}{pboot:pagekeywords}{else}{sort:keywords}{/pboot:if}">
+<meta name="description" content="{pboot:if('{sort:description}'=='')}{pboot:pagedescription}{else}{sort:description}{/pboot:if}">
+<link rel="stylesheet" id="pageloader-css" href="{pboot:sitedomain}/skin/css/pageloader.css" type="text/css" media="all" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitedomain}/skin/css/public.css" />
+<link rel="stylesheet" type="text/css" href="{pboot:sitedomain}/skin/css/iconfont.css" />
+</head>
+<body>
+<div class="wrap isload">
+  {include file=head.html}
+  <!--end-->
+  <div class="pic_bn"> {pboot:sort scode={sort:tcode}}<img class="pic_bn_img" src="[sort:pic]" />{/pboot:sort}
+    <div class="pic_text"> <img src="{pboot:sitedomain}/skin/images/inbt_7.png" /> </div>
+    <div class="pic_go_back">
+      <h2>{sort:topname}</h2>
+      <div class="go_back">
+        <ul>
+          {pboot:nav num=40 parent={sort:tcode}}
+          <li {pboot:if('[nav:scode]'=='{sort:scode}')}class="li_cut"{/pboot:if} ><a href="[nav:link]">[nav:name]</a></li>
+          {/pboot:nav}
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="m_pic_bn"> {pboot:sort scode={sort:tcode}}<img src="[sort:ico]" />{/pboot:sort} </div>
+  <div class="html_cont">
+    <div class="cont_title">
+      <h2>{content:title}</h2>
+      <div class="go_home"> <i class="iconfont">&#xe605;</i> 所在位置：{pboot:position}</div>
+      <div class="clear"></div>
+    </div>
+    <div class="invest"> <img src="{sort:ico}" />
+      <div class="invest_div">
+        <div class="q_invest_div">
+          <h2>{content:title}</h2>
+          {sort:description}</div>
+      </div>
+    </div>
+  </div>
+  <!--业务领域轮播图-->
+  <div class="invest_bottom">
+    <div class="invest_slide_cont">
+      <div class="invest_slide" id="invest_slide">
+        <ul>
+          {pboot:pics id={content:id} num=20}
+          <li> <a><img src="[pics:src]"/>
+            <p>[pics:title]</p>
+            </a> </li>
+          {/pboot:pics}
+        </ul>
+      </div>
+      <div class="slide_li">
+        <div class="slide_ul">
+          <ul>
+            {pboot:pics id={content:id} num=20}
+            <li><img src="[pics:src]" width="198" height="128"/><i class="iconfont">&#xe60e;</i></li>
+            {/pboot:pics}
+          </ul>
+        </div>
+      </div>
+      <div class="slide_perv"> <i class="iconfont">&#xe608;</i> </div>
+      <div class="slide_next"> <i class="iconfont">&#xe64c;</i> </div>
+    </div>
+  </div>
+  <!--公共脚部-->
+  {include file=foot.html}
+</div>
+{include file=foot2.html}
+<!--end--> 
+<script type="text/javascript">
+	var win_width = $(window).width();
+	var this_num = 0;
+	var slide_num = $(".invest_slide li").length;
+	if(win_width < 750) {
+		win_width = $(window).width();
+	} else {
+		win_width = 1108;
+	}
+	$(".invest_slide li").width(win_width);
+	$(".invest_slide ul").width(slide_num * win_width);
+	$(".slide_li ul").width(slide_num * 218);
+	$(".slide_li li").click(function() {
+		$(".slide_li li").removeClass("slide_cut");
+		$(this).addClass("slide_cut");
+		this_num = $(this).index();
+		$(".invest_slide").animate({
+			scrollLeft: win_width * this_num
+		}, 500, "swing");
+		$(".slide_ul").animate({
+			scrollLeft: 218 * (this_num - 2)
+		}, 500, "swing");
+	});
+	$(".slide_next").click(function() {
+		if(slide_num - 1 > this_num) {
+			this_num += 1;
+			$(".invest_slide").animate({
+				scrollLeft: win_width * this_num
+			}, 500, "swing");
+			$(".slide_li li").removeClass("slide_cut");
+			$(".slide_li li").eq(this_num).addClass("slide_cut");
+			$(".slide_ul").animate({
+				scrollLeft: 218 + $(".slide_ul").scrollLeft()
+			}, 500, "swing");
+		}
+	});
+	$(".slide_perv").click(function() {
+		if(this_num > 0) {
+			this_num -= 1;
+			$(".invest_slide").animate({
+				scrollLeft: win_width * this_num
+			}, 500, "swing");
+			$(".slide_li li").removeClass("slide_cut");
+			$(".slide_li li").eq(this_num).addClass("slide_cut");
+			$(".slide_ul").animate({
+				scrollLeft: -218 + $(".slide_ul").scrollLeft()
+			}, 500, "swing");
+		}
+	});
+	$(".slide_li li").eq(0).click();
+	if(win_width < 750) {
+		var start_x;
+		var move_x;
+		var end_x;
+		$('#invest_slide').on('touchstart', function(e) {
+			var _touch = e.originalEvent.targetTouches[0];
+			start_x = _touch.pageX;
+		});
+		$('#invest_slide').on('touchmove', function(e) {
+			var _touch = e.originalEvent.targetTouches[0];
+			var _x = _touch.pageX;
+		});
+		$('#invest_slide').on('touchend', function(e) {
+			var _touch = e.originalEvent.changedTouches[0];
+			end_x = _touch.pageX;
+			if(start_x - end_x > 50) {
+				$(".slide_next").click();
+			} else {
+				$(".slide_perv").click();
+			}
+		});
+	}
+</script>
+</body>
+</html>

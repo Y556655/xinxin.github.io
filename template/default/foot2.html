@@ -1,0 +1,35 @@
+<script src="{pboot:sitedomain}/skin/js/jquery-1.7.2.min.js"></script> 
+<!--<script src="{pboot:sitedomain}/skin/js/pageloader.min.js" type="text/javascript"></script>--> 
+<script src="{pboot:sitedomain}/skin/js/public.min.js" type="text/javascript" charset="utf-8"></script> 
+<script type="text/javascript">
+    if($(window).width()<750){
+        $(".link").hide();
+        
+        $(".foot_bottom").html("{pboot:siteicp} {pboot:sitecopyright} 地址：{pboot:companyaddress} 电话：{pboot:companyphone}   联系人：{pboot:companycontact}  邮箱：{pboot:companyemail}")
+    }
+    $("select.friendlink_select").each(function(){
+    $(this).change(function(){
+        if($(this).val()){
+            window.open($(this).val(),"_blank")
+        }
+    });
+  });
+  $("#StranLink").click(function () {
+      if($(this).html() == '繁'){
+          $(this).html("简")
+      }else{
+          $(this).html("繁")
+      }
+  })
+  $("#search_a").click(function(){
+    var search_keyword_a = $("#search").val();
+    var search_keyword = search_keyword_a.substring(0,30);
+    if (search_keyword != null && search_keyword!="" ){
+        window.location.href = "{pboot:sitedomain}/?keyword="+encodeURIComponent(search_keyword);
+    }else{
+        $("#search").attr('placeholder',"请输入关键字")
+    }
+});  
+</script> 
+<script src="{pboot:sitedomain}/skin/js/stranlink.js" type="text/javascript"></script> 
+<script src="{pboot:sitedomain}/skin/js/gb2big5.js" type="text/javascript"></script> 
